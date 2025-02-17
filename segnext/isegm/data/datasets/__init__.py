@@ -17,3 +17,4 @@ from .oai_zib import OAIZIBDataset
 from .oai import OAIDataset
 from .hard import HARDDataset
 from .hqseg44k import HQSeg44kDataset
+from .cmc import CMCDataset

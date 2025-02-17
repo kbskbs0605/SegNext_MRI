@@ -3,8 +3,8 @@ import argparse
 import importlib.util
 
 import torch
-from segnext.isegm.utils.exp import init_experiment
-
+#from segnext.isegm.utils.exp import init_experiment
+from isegm.utils.exp import init_experiment
 
 def main(rank):
     args = parse_args()

@@ -5,7 +5,7 @@ import numpy as np
 
 from isegm.data.datasets import GrabCutDataset, BerkeleyDataset, DavisDataset, \
     SBDEvaluationDataset, PascalVocDataset, BraTSDataset, ssTEMDataset, OAIZIBDataset, \
-    HARDDataset, ADE20kDataset, HQSeg44kDataset
+    HARDDataset, ADE20kDataset, HQSeg44kDataset, CMCDataset
 from isegm.utils.serialization import load_model
 
 
@@ -75,6 +75,8 @@ def get_dataset(dataset_name, cfg):
         dataset = ADE20kDataset(cfg.ADE20K_PATH, split='val')
     elif dataset_name == 'HQSeg44K':
         dataset = HQSeg44kDataset(cfg.HQSeg44K_PATH, split='val')
+    elif dataset_name == 'MyDataset':
+        dataset = CMCDataset(cfg.MyDataset_PATH, split='val')
     else:
         dataset = None
 

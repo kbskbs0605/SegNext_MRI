@@ -107,9 +107,9 @@ def get_boundaries(instances_masks, boundaries_width=1):
         boundaries = np.logical_or(boundaries, obj_boundary)
     return boundaries
     
- 
-def draw_with_blend_and_clicks(img, mask=None, alpha=0.6, clicks_list=None, pos_color=(0, 255, 0),
-                               neg_color=(255, 0, 0), radius=4):
+ ######################################
+def draw_with_blend_and_clicks(img, mask=None, alpha=0.2, clicks_list=None, pos_color=(255, 0, 0),
+                               neg_color=(0, 255, 0), radius=4):
     result = img.copy()
 
     if mask is not None:

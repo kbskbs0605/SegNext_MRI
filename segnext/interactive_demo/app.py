@@ -63,7 +63,7 @@ class InteractiveDemoApp(ttk.Frame):
             'lbfgs_max_iters': tk.IntVar(value=20),
 
             'alpha_blend': tk.DoubleVar(value=0.5),
-            'click_radius': tk.IntVar(value=3),
+            'click_radius': tk.IntVar(value=1), ####################################
         }
 
     def _add_menu(self):
@@ -90,7 +90,8 @@ class InteractiveDemoApp(ttk.Frame):
         self.canvas_frame.rowconfigure(0, weight=1)
         self.canvas_frame.columnconfigure(0, weight=1)
 
-        self.canvas = tk.Canvas(self.canvas_frame, highlightthickness=0, cursor="hand1", width=400, height=400)
+        self.canvas = tk.Canvas(self.canvas_frame, highlightthickness=0, cursor="arrow", width=400, height=400)
+        #self.canvas = tk.Canvas(self.canvas_frame, highlightthickness=0, cursor="hand1", width=400, height=400)
         self.canvas.grid(row=0, column=0, sticky='nswe', padx=5, pady=5)
 
         self.image_on_canvas = None

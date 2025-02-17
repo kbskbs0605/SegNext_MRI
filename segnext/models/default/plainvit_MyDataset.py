@@ -14,6 +14,7 @@ def build_model(img_size) -> PlainVitModel:
         img_size=(img_size, img_size),
         patch_size=(16,16),
         in_chans=3,
+        #in_chans=1,
         embed_dim=768,
         depth=12,
         global_atten_freq=3,
@@ -108,19 +109,18 @@ def train(model: PlainVitModel, cfg) -> None:
         max_num_merged_objects=2
     )
 
-    trainset = CocoLvisDataset(
-        cfg.LVIS_v1_PATH,
+    trainset = CMCDataset(
+        cfg.MyDataset_PATH,
         split='train',
         augmentator=train_augmentator,
         min_object_area=1000,
         keep_background_prob=0.05,
         points_sampler=points_sampler,
-        epoch_len=30000,
-        stuff_prob=0.30
+        epoch_len=30000
     )
 
-    valset = CocoLvisDataset(
-        cfg.LVIS_v1_PATH,
+    valset = CMCDataset(
+        cfg.MyDataset_PATH,
         split='val',
         augmentator=val_augmentator,
         min_object_area=1000,
