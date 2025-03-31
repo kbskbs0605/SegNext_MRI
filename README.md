@@ -1,15 +1,8 @@
-# Rethinking Interactive Image Segmentation with Low Latency, High Quality, and Diverse Prompts
-Pytorch implementation for paper [Rethinking Interactive Image Segmentation with Low Latency, High Quality, and Diverse Prompts](https://arxiv.org/abs/2404.00741), CVPR 2024. <br>
-Qin Liu, Jaemin Cho, Mohit Bansal, Marc Niethammer <br>
-UNC-Chapel Hill
-#### [Paper](https://arxiv.org/pdf/2404.00741.pdf) | [Project](https://uncbiag.github.io/SegNext/) | [Demos](https://drive.google.com/drive/folders/13tOhSYFCY2Ue8QR5rR8EEWHXGE75Zkxo?usp=sharing)
+# Interactive Segmentation for MRI slices
+Pytorch implementation for MRI image obtained from Catholic Medical Center, Korea, from Banseok Kim <br>
+Code was adjusted from paper [Rethinking Interactive Image Segmentation with Low Latency, High Quality, and Diverse Prompts](https://arxiv.org/abs/2404.00741), CVPR 2024. Qin Liu, Jaemin Cho, Mohit Bansal, Marc Niethammer <br>
+#### [Paper](https://arxiv.org/pdf/2404.00741.pdf)
 
-<p align="center">
-  <img src="./assets/medal.gif" alt="drawing", height="170"/>
-  <img src="./assets/bicyclestand.gif" alt="drawing", height="170"/>
-  <img src="./assets/crack.gif" alt="drawing", height="170"/>
-
-</p>
 
 ## Installation
 The code is tested with ``python=3.10``, ``torch=2.2.0``, ``torchvision=0.17.0``.
@@ -25,14 +18,7 @@ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cuda=
 pip install -r requirements.txt
 ```
 ## Getting Started
-First, download three model weights: vitb_sax1 (408M), vitb_sax2 (435M), and vitb_sax2_ft (435M). These weights will be automatically saved to the ``weights`` folder.
-```
-python download.py
-``` 
-Run interactive GUI with the downloaded weights. The ``assets`` contains images for demo.
-```
-./run_demo.sh
-``` 
+First, load the 2D slices
 
 ## Datasets
 We train and test our method on three datasets: DAVIS, COCO+LVIS, and HQSeg-44K.

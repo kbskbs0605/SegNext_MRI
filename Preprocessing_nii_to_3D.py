@@ -36,26 +36,6 @@ def resampling(voxel_data, original_spacing, is_mask=False):
         return voxel_data, tuple(spacing_array)
 
 
-# def affine_trans(voxel_data, affine_matrix, is_mask=False):
-#     """
-#     Apply affine transformation while ensuring masks remain binary.
-#     - Uses nearest-neighbor mode to prevent disappearing ones.
-#     - Ensures non-negative values in masks.
-#     """
-#     transformed_data = affine_transform(
-#         voxel_data,
-#         affine_matrix[:3, :3],
-#         offset=affine_matrix[:3, 3],
-#         order=0 if is_mask else 1,  # Nearest-neighbor for masks, linear for images
-#         mode='nearest'  # Prevents out-of-bounds artifacts
-#     )
-    
-#     # Ensure binary mask stays 0 or 1
-#     if is_mask:
-#         transformed_data = np.round(transformed_data)
-    
-#     return transformed_data
-
 
 # Function to process and save subject data
 def process_subject_data(index, img_path, gt_path, pred_path, output_dir, log_file="./data/3D_pt/transformation_log.txt"):
@@ -65,10 +45,6 @@ def process_subject_data(index, img_path, gt_path, pred_path, output_dir, log_fi
     img, original_spacing_img, affine_img = load_nifti(img_path)
     gt, original_spacing_gt, affine_gt = load_nifti(gt_path, is_mask=True)
     pred, original_spacing_pred, affine_gt = load_nifti(pred_path, is_mask=True)
-    
-    # # Apply affine transformations
-    # img_affine = affine_trans(img, affine_img, is_mask=False)
-    # gt_affine = affine_trans(gt, affine_gt, is_mask=True)
 
     # Resample to target spacing
     img_resampled, resulting_spacing = resampling(img, original_spacing_img)
@@ -147,7 +123,11 @@ def process_subject_data(index, img_path, gt_path, pred_path, output_dir, log_fi
     
     print(f"Saved: s{index}_img.pt & s{index}_gt.pt")
 
-# Example usage
+
+################################################################################################
+################################ Example Directory Setting######################################
+################################################################################################
+
 input_dir = "/data/human/CMC/sample2"  # Modify with actual path
 output_dir = "./data/3D_pt"
 os.makedirs(output_dir, exist_ok=True)
